@@ -1,0 +1,9 @@
+{
+    "properties": [
+        {
+            "name": "app.startup.data.path",
+            "type": "java.lang.String",
+            "description": "path for startup json location"
+        }
+    ]
+}
