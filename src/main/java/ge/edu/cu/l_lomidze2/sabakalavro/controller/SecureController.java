@@ -22,7 +22,7 @@ public class SecureController {
         this.userService = userService;
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/user/{id}")
     public User getUser(@PathVariable Long id) {
         logger.info("retrieved user");
 

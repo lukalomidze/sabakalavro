@@ -16,7 +16,7 @@ public class VulnerableController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/user/{id}")
     public User getUser(@PathVariable Long id) {
         return userService.getUser(id);
     }
