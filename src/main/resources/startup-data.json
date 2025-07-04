@@ -5,8 +5,7 @@
     "username": "John.Doe",
     "email": "jdoe@example.com",
     "age": 30,
-    "gender": "MALE",
-    "password": "rTHoq7PCBl"
+    "password": "password"
   },
   {
     "name": "Jane",
@@ -14,7 +13,6 @@
     "username": "Jane.Smith",
     "email": "jsmith@example.com",
     "age": 35,
-    "gender": "FEMALE",
-    "password": "GhS9yZaldD"
+    "password": "password"
   }
 ]
