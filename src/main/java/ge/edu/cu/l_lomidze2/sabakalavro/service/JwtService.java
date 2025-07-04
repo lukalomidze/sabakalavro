@@ -31,10 +31,10 @@ public class JwtService {
     public String encode(Authentication authentication) {
         return Jwts.builder()
             .subject(authentication.getName())
-            .signWith(key)
+            .claim("role", authentication.getAuthorities().iterator().next().getAuthority())
             .expiration(Date.from(Instant.now().plus(expiration)))
             .id(UUID.randomUUID().toString())
-        .compact();
+        .signWith(key).compact();
     }
 
     public Claims decode(String token) {

@@ -65,6 +65,7 @@ public class SecurityConfig {
                 return User.builder()
                     .username(user.getUsername())
                     .password(user.getPassword())
+                    .roles(user.getRole())
                 .build();
             }
         };
