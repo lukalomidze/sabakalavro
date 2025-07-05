@@ -11,7 +11,7 @@ import ge.edu.cu.l_lomidze2.sabakalavro.service.UserService;
 
 
 @RestController
-@RequestMapping("/api/vulnerable")
+@RequestMapping("/vulnerable")
 public class VulnerableController {
     @Autowired
     private UserService userService;

@@ -11,7 +11,7 @@ import ge.edu.cu.l_lomidze2.sabakalavro.service.UserService;
 
 
 @RestController
-@RequestMapping("/api/secure")
+@RequestMapping("/secure")
 public class SecureController {
     @Autowired
     private UserService userService;
