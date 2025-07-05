@@ -17,14 +17,19 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import ge.edu.cu.l_lomidze2.sabakalavro.filter.AuthenticationFilter;
+import ge.edu.cu.l_lomidze2.sabakalavro.filter.BruteForceFilter;
 import ge.edu.cu.l_lomidze2.sabakalavro.repository.UserRepository;
 
 @Configuration
 public class SecurityConfig {
     @Bean
     SecurityFilterChain baseSecurity(
-        HttpSecurity http
+        HttpSecurity http,
+        AuthenticationFilter authFilter,
+        BruteForceFilter bruteForceFilter
     ) throws Exception {
         return http
             .csrf(csrf -> csrf.disable())
@@ -43,9 +48,9 @@ public class SecurityConfig {
                     SessionCreationPolicy.STATELESS
                 )
             )
+            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+            .addFilterBefore(bruteForceFilter, AuthenticationFilter.class)
         .build();
-            // .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
-            // .addFilterBefore(bruteForceFilter, AuthenticationFilter.class);
     }
 
     @Bean
