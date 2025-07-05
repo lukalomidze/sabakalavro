@@ -5,7 +5,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -36,12 +35,9 @@ public class SecurityConfig {
             .cors(withDefaults())
             .authorizeHttpRequests(
                 requestRegistry -> requestRegistry
-                    .requestMatchers(HttpMethod.GET, "/user/login").permitAll()
-                    .requestMatchers(
-                        "/user/trainee",
-                        "/user/trainer"
-                    )
-                .permitAll()
+                    .requestMatchers("/login").permitAll()
+                    .requestMatchers("/*/user/*").authenticated()
+                .anyRequest().permitAll()
             )
             .sessionManagement(
                 configurer -> configurer.sessionCreationPolicy(
