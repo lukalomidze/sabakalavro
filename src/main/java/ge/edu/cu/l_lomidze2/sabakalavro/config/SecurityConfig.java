@@ -44,6 +44,7 @@ public class SecurityConfig {
                     SessionCreationPolicy.STATELESS
                 )
             )
+            .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()))
             .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
             .addFilterBefore(bruteForceFilter, AuthenticationFilter.class)
         .build();
