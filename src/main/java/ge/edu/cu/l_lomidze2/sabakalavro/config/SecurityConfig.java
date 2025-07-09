@@ -37,10 +37,13 @@ public class SecurityConfig {
             .cors(withDefaults())
             .authorizeHttpRequests(
                 requestRegistry -> requestRegistry
-                    .requestMatchers("/login").permitAll()
-                    .requestMatchers("/swagger-ui/**").permitAll()
-                    .requestMatchers("/v3/api-docs/**").permitAll()
-                    .requestMatchers("/h2-console/**").permitAll()
+                    .requestMatchers(
+                        "/error",
+                        "/login",
+                        "/swagger-ui/**",
+                        "/v3/api-docs/**",
+                        "/h2-console/**"
+                    ).permitAll()
                 .anyRequest().authenticated()
             )
             .sessionManagement(
