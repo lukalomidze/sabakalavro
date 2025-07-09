@@ -15,10 +15,12 @@ import ge.edu.cu.l_lomidze2.sabakalavro.dto.UserDTO;
 import ge.edu.cu.l_lomidze2.sabakalavro.model.User;
 import ge.edu.cu.l_lomidze2.sabakalavro.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 
 @RestController
 @RequestMapping("/secure")
+@Tag(name = "Secure Endpoints")
 public class SecureController {
     @Autowired
     private UserService userService;

@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 import ge.edu.cu.l_lomidze2.sabakalavro.model.User;
 import ge.edu.cu.l_lomidze2.sabakalavro.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 
 @RestController
 @RequestMapping("/vulnerable")
+@Tag(name = "Vulnerable Endpoints")
 public class VulnerableController {
     @Autowired
     private UserService userService;
