@@ -48,7 +48,6 @@ public class SecurityConfig {
             )
             .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()))
             .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
-            .addFilterBefore(bruteForceFilter, AuthenticationFilter.class)
         .build();
     }
 

@@ -10,6 +10,7 @@ import ge.edu.cu.l_lomidze2.sabakalavro.model.User;
 import ge.edu.cu.l_lomidze2.sabakalavro.service.UserService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 
 
 @RestController
@@ -28,6 +29,13 @@ public class VulnerableController {
     @Tag(name = "2. Excessive Data Exposure")
     @SecurityRequirements({})
     public User excessiveExposure(@PathVariable Long id) {
+        return userService.getUser(id);
+    }
+
+    @GetMapping("/unrestricted/user/{id}")
+    @Tag(name = "3. Unrestricted API Consumption")
+    @SecurityRequirements({})
+    public User unrestrictedConsumption(@PathVariable Long id, HttpServletRequest request) {
         return userService.getUser(id);
     }
 }
