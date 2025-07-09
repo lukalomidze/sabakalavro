@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ge.edu.cu.l_lomidze2.sabakalavro.dto.UserDTO;
 import ge.edu.cu.l_lomidze2.sabakalavro.model.User;
 import ge.edu.cu.l_lomidze2.sabakalavro.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 
@@ -41,6 +42,7 @@ public class SecureController {
 
     @GetMapping("/excessive/user/{id}")
     @Tag(name = "2. Excessive Data Exposure")
+    @SecurityRequirements({})
     public UserDTO excessiveExposure(@PathVariable Long id) {
         return mapper.convertValue(userService.getUser(id), UserDTO.class);
     }

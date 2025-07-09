@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ge.edu.cu.l_lomidze2.sabakalavro.model.User;
 import ge.edu.cu.l_lomidze2.sabakalavro.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 
@@ -25,6 +26,7 @@ public class VulnerableController {
 
     @GetMapping("/excessive/user/{id}")
     @Tag(name = "2. Excessive Data Exposure")
+    @SecurityRequirements({})
     public User excessiveExposure(@PathVariable Long id) {
         return userService.getUser(id);
     }
