@@ -14,13 +14,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ge.edu.cu.l_lomidze2.sabakalavro.dto.UserDTO;
 import ge.edu.cu.l_lomidze2.sabakalavro.model.User;
 import ge.edu.cu.l_lomidze2.sabakalavro.service.UserService;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 
 @RestController
 @RequestMapping("/secure")
-@Tag(name = "Secure Endpoints")
 public class SecureController {
     @Autowired
     private UserService userService;
@@ -30,18 +28,19 @@ public class SecureController {
 
     @GetMapping("/bola/user/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    @Operation(summary = "BOLA (Broken Object Level Authentication)")
+    @Tag(name = "1. BOLA (Broken Object Level Authentication)")
     public User bola(@PathVariable Long id) {
         return userService.getUser(id);
     }
 
     @GetMapping("/bola/user")
-    @Operation(summary = "BOLA (Broken Object Level Authentication)")
+    @Tag(name = "1. BOLA (Broken Object Level Authentication)")
     public User bolaSelf(Principal principal) {
         return userService.getUser(principal.getName());
     }
 
     @GetMapping("/excessive/user/{id}")
+    @Tag(name = "2. Excessive Data Exposure")
     public UserDTO excessiveExposure(@PathVariable Long id) {
         return mapper.convertValue(userService.getUser(id), UserDTO.class);
     }
