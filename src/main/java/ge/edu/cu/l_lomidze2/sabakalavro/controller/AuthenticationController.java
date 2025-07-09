@@ -7,7 +7,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -19,7 +18,6 @@ import jakarta.validation.constraints.NotBlank;
 
 
 @RestController
-@RequestMapping("/user")
 public class AuthenticationController {
     @Autowired
     private AuthenticationManager authManager;
