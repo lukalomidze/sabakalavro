@@ -40,7 +40,8 @@ public class OpenApiConfig {
     @Bean
     GroupedOpenApi vulnerableApis() {
         return GroupedOpenApi.builder()
-            .group("Vulnerable Endpoints")
+            .group("vulnerable")
+            .displayName("Vulnerable Endpoints")
             .pathsToMatch("/vulnerable/**")
         .build();
     }
@@ -48,7 +49,8 @@ public class OpenApiConfig {
     @Bean
     GroupedOpenApi secureApis() {
         return GroupedOpenApi.builder()
-            .group("Secure Endpoints")
+            .group("secure")
+            .displayName("Secure Endpoints")
             .pathsToMatch("/secure/**")
         .build();
     }
