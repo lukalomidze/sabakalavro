@@ -10,11 +10,13 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import ge.edu.cu.l_lomidze2.sabakalavro.model.User;
 import ge.edu.cu.l_lomidze2.sabakalavro.repository.UserRepository;
 import ge.edu.cu.l_lomidze2.sabakalavro.util.JsonUtil;
 
+@Component
 public class DatabaseInitializer implements ApplicationRunner {
     private static Logger logger = LogManager.getLogger();
 
