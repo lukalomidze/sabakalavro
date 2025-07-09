@@ -54,4 +54,13 @@ public class OpenApiConfig {
             .pathsToMatch("/secure/**")
         .build();
     }
+
+    @Bean
+    GroupedOpenApi authApis() {
+        return GroupedOpenApi.builder()
+            .group("auth")
+            .displayName("Authentication")
+            .pathsToMatch("/login/**")
+        .build();
+    }
 }
