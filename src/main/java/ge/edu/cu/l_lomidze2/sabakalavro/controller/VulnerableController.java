@@ -32,13 +32,13 @@ public class VulnerableController {
         return userService.getUser(id);
     }
 
-    @GetMapping("/excessive/user/{id}")
+    @GetMapping("/excessive/user")
     @Tag(name = "2. Excessive Data Exposure")
     public User excessiveExposure(Principal principal) {
         return userService.getUser(principal.getName());
     }
 
-    @GetMapping("/unrestricted/user/{id}")
+    @GetMapping("/unrestricted/user")
     @Tag(name = "3. Unrestricted API Consumption")
     public UserDTO unrestrictedConsumption(Principal principal, HttpServletRequest request) {
         return mapper.convertValue(userService.getUser(principal.getName()), UserDTO.class);

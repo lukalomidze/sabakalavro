@@ -47,13 +47,13 @@ public class SecureController {
         return userService.getUser(principal.getName());
     }
 
-    @GetMapping("/excessive/user/{id}")
+    @GetMapping("/excessive/user")
     @Tag(name = "2. Excessive Data Exposure")
     public UserDTO excessiveExposure(Principal principal) {
         return mapper.convertValue(userService.getUser(principal.getName()), UserDTO.class);
     }
 
-    @GetMapping("/unrestricted/user/{id}")
+    @GetMapping("/unrestricted/user")
     @Tag(name = "3. Unrestricted API Consumption")
     public UserDTO unrestrictedConsumption(Principal principal, HttpServletRequest request) {
         var ip = IpUtil.getIp(request);
