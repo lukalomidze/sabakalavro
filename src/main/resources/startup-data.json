@@ -2,7 +2,7 @@
   {
     "name": "John",
     "surname": "Doe",
-    "username": "John.Doe",
+    "username": "jdoe",
     "email": "jdoe@example.com",
     "age": 30,
     "password": "password",
@@ -11,7 +11,7 @@
   {
     "name": "Jane",
     "surname": "Smith",
-    "username": "Jane.Smith",
+    "username": "jsmith",
     "email": "jsmith@example.com",
     "age": 35,
     "password": "password",
