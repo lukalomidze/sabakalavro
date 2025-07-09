@@ -61,6 +61,8 @@ public class SecureController {
     public User unrestrictedConsumption(@PathVariable Long id, HttpServletRequest request) {
         var ip = IpUtil.getIp(request);
 
+        bruteForceService.onRequest(ip);
+
         if (bruteForceService.isLockedOut(ip)) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
