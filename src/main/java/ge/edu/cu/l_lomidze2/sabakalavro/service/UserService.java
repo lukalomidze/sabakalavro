@@ -23,6 +23,12 @@ public class UserService {
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    public User getUser(String username) {
+        return userRepository
+            .findByUsername(username)
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }

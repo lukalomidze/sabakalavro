@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ge.edu.cu.l_lomidze2.sabakalavro.model.User;
 import ge.edu.cu.l_lomidze2.sabakalavro.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 
 
 @RestController
@@ -16,7 +17,8 @@ public class VulnerableController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/bola/user/{id}")
+    @Operation(summary = "BOLA (Broken Object Level Authentication)")
     public User getUser(@PathVariable Long id) {
         return userService.getUser(id);
     }
