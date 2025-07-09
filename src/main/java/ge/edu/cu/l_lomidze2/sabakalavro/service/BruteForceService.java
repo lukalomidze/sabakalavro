@@ -24,7 +24,7 @@ public class BruteForceService {
     @Value("${app.authentication.failure.lockout}")
     private Duration lockoutDuration;
 
-    public void onLoginFailed(String ip) {
+    public void onRequest(String ip) {
         var failed = cache.merge(ip, 1, Math::addExact);
 
         logger.warn("ip {} failed login {} times", ip, failed);
