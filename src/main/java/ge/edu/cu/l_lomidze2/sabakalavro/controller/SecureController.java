@@ -51,14 +51,14 @@ public class SecureController {
     @GetMapping("/excessive/user/{id}")
     @Tag(name = "2. Excessive Data Exposure")
     @SecurityRequirements({})
-    public UserDTO excessiveExposure(@PathVariable Long id) {
-        return mapper.convertValue(userService.getUser(id), UserDTO.class);
+    public UserDTO excessiveExposure(Principal principal) {
+        return mapper.convertValue(userService.getUser(principal.getName()), UserDTO.class);
     }
 
     @GetMapping("/unrestricted/user/{id}")
     @Tag(name = "3. Unrestricted API Consumption")
     @SecurityRequirements({})
-    public User unrestrictedConsumption(@PathVariable Long id, HttpServletRequest request) {
+    public UserDTO unrestrictedConsumption(Principal principal, HttpServletRequest request) {
         var ip = IpUtil.getIp(request);
 
         bruteForceService.onRequest(ip);
@@ -67,6 +67,6 @@ public class SecureController {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
 
-        return userService.getUser(id);
+        return mapper.convertValue(userService.getUser(principal.getName()), UserDTO.class);
     }
 }

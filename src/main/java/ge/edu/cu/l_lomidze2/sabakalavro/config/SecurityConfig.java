@@ -38,8 +38,10 @@ public class SecurityConfig {
             .authorizeHttpRequests(
                 requestRegistry -> requestRegistry
                     .requestMatchers("/login").permitAll()
-                    .requestMatchers("/*/bola/**").authenticated()
-                .anyRequest().permitAll()
+                    .requestMatchers("/swagger-ui/**").permitAll()
+                    .requestMatchers("/v3/api-docs/**").permitAll()
+                    .requestMatchers("/h2-console/**").permitAll()
+                .anyRequest().authenticated()
             )
             .sessionManagement(
                 configurer -> configurer.sessionCreationPolicy(
