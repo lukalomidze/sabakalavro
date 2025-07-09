@@ -22,4 +22,10 @@ public class VulnerableController {
     public User getUser(@PathVariable Long id) {
         return userService.getUser(id);
     }
+
+    @GetMapping("/excessive/user/{id}")
+    @Tag(name = "2. Excessive Data Exposure")
+    public User excessiveExposure(@PathVariable Long id) {
+        return userService.getUser(id);
+    }
 }
