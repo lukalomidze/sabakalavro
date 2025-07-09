@@ -18,7 +18,6 @@ import ge.edu.cu.l_lomidze2.sabakalavro.model.User;
 import ge.edu.cu.l_lomidze2.sabakalavro.service.BruteForceService;
 import ge.edu.cu.l_lomidze2.sabakalavro.service.UserService;
 import ge.edu.cu.l_lomidze2.sabakalavro.util.IpUtil;
-import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -50,14 +49,12 @@ public class SecureController {
 
     @GetMapping("/excessive/user/{id}")
     @Tag(name = "2. Excessive Data Exposure")
-    @SecurityRequirements({})
     public UserDTO excessiveExposure(Principal principal) {
         return mapper.convertValue(userService.getUser(principal.getName()), UserDTO.class);
     }
 
     @GetMapping("/unrestricted/user/{id}")
     @Tag(name = "3. Unrestricted API Consumption")
-    @SecurityRequirements({})
     public UserDTO unrestrictedConsumption(Principal principal, HttpServletRequest request) {
         var ip = IpUtil.getIp(request);
 
